@@ -1,0 +1,155 @@
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 8.5rem;
+    height: 3rem;
+    background-color: #fff;
+}
+
+.linkContainer:hover .iconContainer, .linkContainer:focus .iconContainer {
+    background-color: #ffeea4;
+}
+
+.linkContainer:hover .iconContainer2, .linkContainer:focus .iconContainer2 {
+    background-color: #ff9e4a;
+}
+
+.linkContainer:hover .iconContainer3, .linkContainer:focus .iconContainer3 {
+    background-color: #e8f5d0;
+}
+
+.linkContainer:hover .iconContainer4, .linkContainer:focus .iconContainer4 {
+    background-color: #d6f0f9;
+}
+
+.linkContainer:hover .iconContainer5, .linkContainer:focus .iconContainer5 {
+    background-color: #ffd8d5;
+}
+
+.linkContainer:hover .iconContainer6, .linkContainer:focus .iconContainer6 {
+    background-color: #d2d9e4;
+}
+
+.linkContainer:hover .linkText, .linkContainer:focus .linkText {
+    color: #000;
+}
+
+.iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    background-color: #fff8d9;
+    border-radius: 15.38px;
+}
+
+.iconContainer2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    border-radius: 15.38px;
+    background-color: #ffdcbe;
+}
+
+.iconContainer3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    border-radius: 15.38px;
+    background-color: #f1f9e6;
+}
+
+.iconContainer4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    border-radius: 15.38px;
+    background-color: #ebf7fd;
+}
+
+.iconContainer5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    border-radius: 15.38px;
+    background-color: #ffe8e5;
+}
+
+.iconContainer6 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
+    border-radius: 15.38px;
+    background-color: #e0e6f0;
+}
+
+.icon {
+    width: 1.121rem;
+    height: 1.121rem;
+}
+
+.linkText {
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    color: #92a2ad;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.linkText:hover, .linkText:focus {
+    color: #000;
+}
+
+.linkContainer img {
+    width: 7.064rem;
+    height: 3.064rem;
+    object-fit: contain;
+    padding: 1.5rem;
+    padding-top: 1rem;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 11rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.sidebarContainer button {
+    position: relative;
+    left: 5px;
+    top: 0;
+}

@@ -1,0 +1,89 @@
+.category-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    gap: 1rem;
+}
+
+.category-card-text p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.category-card-text2 p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.category-card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    gap: 1rem;
+}
+
+.category-card-buttons button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    color: #312858;
+    font-size: 2.5svb;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.category-card-image {
+    margin: 0;
+    width: 212px;
+    height: 212px;
+}
+
+.category-card-image img {
+    border-radius: 15px;
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+}
+
+.shuffle button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 211px;
+    height: 50px;
+    padding: 1rem;
+    border-radius: 46px;
+    background-color: #9fd657;
+    border: none;
+    color: #fff;
+    font-size: 2.5svb;
+    font-weight: 600;
+    background-image: url("../../../assets/svg/play.svg");
+    background-repeat: no-repeat;
+    background-position: calc(0% + 10px) center;
+    background-size: 30px;
+    margin: 0;
+    padding: 10px ;
+    cursor: pointer;
+}

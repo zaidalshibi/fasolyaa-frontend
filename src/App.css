@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Questv1-Regular";
+  src: url("./assets/fonts/Questv1-Regular.otf");
+}
+
+html {
+  font-family: "Questv1-Regular";
+}
+
+.App {
+  text-align: center;
+}
