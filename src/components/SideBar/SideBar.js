@@ -15,8 +15,11 @@ const SideBar = () => {
     const handleSignout = ( e ) => {
         e.preventDefault();
         localStorage.removeItem( 'token' );
+        localStorage.removeItem( 'id' );
+        localStorage.removeItem( 'username' );
         const signoutbutton = document.getElementById( 'signout' );
         signoutbutton.style.display = 'none';
+        window.location.reload();
     };
 
     return (
@@ -167,6 +170,7 @@ const SideBar = () => {
                     }}>
                     <button
                         className="linkText"
+                        id="signout"
                         onClick={handleSignout}
                         style={{
                             border: 'none',

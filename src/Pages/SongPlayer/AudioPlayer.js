@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControls";
 import data from "../HomeSongs/data.json";
+import song from "./assets/SoundHelix-Song-1.mp3";
 import { useNavigate } from "react-router-dom";
 import WaveSurfer from "wavesurfer.js";
 
@@ -14,28 +15,47 @@ const AudioPlayer = ( { handleReRender } ) => {
 
     useEffect( () => {
         if ( !waveformRef.current ) return;
-        const wavesurfer = WaveSurfer.create( {
+        global.wavesurfer = WaveSurfer.create( {
             container: waveformRef.current,
-            waveColor: 'violet',
-            progressColor: 'purple'
+            waveColor: '#ffae62',
+            progressColor: '#fff',
+            barWidth: 3,
+            cursorWidth: 1,
+            cursorHeight: 1,
+            cursorColor: '#62c058',
+            barHeight: 1,
+            barGap: 5,
+            responsive: true,
+            barRadius: 3,
+            cursorRadius: 3,
+            hideScrollbar: true,
+            normalize: true,
+            height: 100,
+            rtl: true,
         } );
-        wavesurfer.load( tracks[ trackIndex ].audioFile );
+        global.wavesurfer.load( song );
+        global.wavesurfer.on( 'audioprocess', () => {
+            setTrackProgress( global.wavesurfer.getCurrentTime() );
+        } );
+        global.wavesurfer.on( 'seek', () => {
+            setTrackProgress( global.wavesurfer.getCurrentTime() );
+        } );
+        global.wavesurfer.on( 'finish', () => {
+            toNextTrack();
+        } );
+        return () => global.wavesurfer.destroy();
     }, [ trackIndex ] );
 
 
 
-    const { title, author, audioFile } = tracks[ trackIndex ];
+    const { title, author } = tracks[ trackIndex ];
 
-    const audioRef = useRef( new Audio( audioFile ) );
+    const audioRef = useRef( new Audio( song ) );
     const intervalRef = useRef();
     const isReady = useRef( false );
-    const { duration } = audioRef.current;
-    const currentPercentage = duration
-        ? `${( trackProgress / duration ) * 100}%`
-        : "0%";
 
     const handleDownload = () => {
-        fetch( audioFile, {
+        fetch( song, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/.mp3',
@@ -79,19 +99,6 @@ const AudioPlayer = ( { handleReRender } ) => {
         }, [ 1000 ] );
     };
 
-    const onScrub = ( value ) => {
-        clearInterval( intervalRef.current );
-        audioRef.current.currentTime = value;
-        setTrackProgress( audioRef.current.currentTime );
-    };
-
-    const onScrubEnd = () => {
-        if ( !isPlaying ) {
-            setIsPlaying( true );
-        }
-        startTimer();
-    };
-
     const toPrevTrack = () => {
         if ( trackIndex - 1 < 0 ) {
             setTrackIndex( tracks.length - 1 );
@@ -118,19 +125,19 @@ const AudioPlayer = ( { handleReRender } ) => {
 
     useEffect( () => {
         if ( isPlaying ) {
-            audioRef.current.play();
+            global.wavesurfer.play();
             startTimer();
         } else {
-            audioRef.current.pause();
+            global.wavesurfer.pause();
         }
     }, [ isPlaying ] );
 
     useEffect( () => {
-        audioRef.current.pause();
-        audioRef.current = new Audio( audioFile );
+        global.wavesurfer.pause();
+        audioRef.current = new Audio( song );
         setTrackProgress( audioRef.current.currentTime );
         if ( isReady.current ) {
-            audioRef.current.play();
+            global.wavesurfer.play();
             setIsPlaying( true );
             startTimer();
         } else {
@@ -140,7 +147,7 @@ const AudioPlayer = ( { handleReRender } ) => {
 
     useEffect( () => {
         return () => {
-            audioRef.current.pause();
+            global.wavesurfer.pause();
             clearInterval( intervalRef.current );
         };
     }, [] );
@@ -150,6 +157,14 @@ const AudioPlayer = ( { handleReRender } ) => {
             <div className="audio-player">
                 <div className="track-info">
                     <div ref={waveformRef}></div>
+                    <div className="track-dur">
+                    <p className='track-duration'>
+                        {Math.floor( trackProgress / 60 )}:{parseInt( trackProgress ) % 60 < 10 ? '0' + parseInt( trackProgress ) % 60 : parseInt( trackProgress ) % 60}
+                    </p>
+                    <p className='track-full-duration'>
+                        {Math.floor( audioRef.current.duration / 60 )}:{parseInt( audioRef.current.duration ) % 60 < 10 ? '0' + parseInt( audioRef.current.duration ) % 60 : parseInt( audioRef.current.duration ) % 60}
+                    </p>
+                    </div>
                     <AudioControls
                         isPlaying={isPlaying}
                         onPrevClick={toPrevTrack}

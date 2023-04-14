@@ -18,27 +18,27 @@ function SongPlayer () {
     const id = useParams().id;
 
     // blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-    const getSongs = async () => {
-        await axios.get( "http://20.98.84.196:4000/api/v1/songs", {
-            headers:
-            {
-                'x-admin': "g84y5n8tye34",
+    // const getSongs = async () => {
+    //     await axios.get( "http://20.98.84.196:4000/api/v1/songs", {
+    //         headers:
+    //         {
+    //             'x-admin': "g84y5n8tye34",
                 
-            }
-        } ).then( ( response ) => {
-            console.log( response );
-            console.log( response.data );
-            setSongs( response.data );
-        } ).catch( ( error ) => {
-            console.log( error );
-        } );
-    };
-
-    // const getSongs = () => {
-    //     const song = data.data.find( ( song ) => song.id === id );
-    //     setSong( song );
-    //     setSongs( data.data );
+    //         }
+    //     } ).then( ( response ) => {
+    //         console.log( response );
+    //         console.log( response.data );
+    //         setSongs( response.data );
+    //     } ).catch( ( error ) => {
+    //         console.log( error );
+    //     } );
     // };
+
+    const getSongs = () => {
+        const song = data.data.find( ( song ) => song.id === id );
+        setSong( song );
+        setSongs( data.data );
+    };
 
     useEffect( () => {
         getSongs();
