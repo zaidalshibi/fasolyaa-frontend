@@ -9,7 +9,7 @@ import { ReactComponent as Info } from "../../assets/svg/info.svg";
 import { ReactComponent as AddList } from "../../assets/svg/addList.svg";
 import "./SongPlayer.css";
 import AudioPlayer from "./AudioPlayer";
-import axios from "axios";
+// import axios from "axios";
 
 function SongPlayer () {
     const [ song, setSong ] = useState( {} );
